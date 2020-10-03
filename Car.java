@@ -1,6 +1,11 @@
 package kr.or.connect.diexam01;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Car {
+	@Autowired //알아서 주입, 굳이 setter메소드는 필요없음.
 	private Engine v8;
 	
 	public Car() {
@@ -11,15 +16,8 @@ public class Car {
 		this.v8 = e;
 	}
 	
-	public void run(){
+	public void run() {
 		System.out.println("엔진을 이용하여 달립니다.");
 		v8.exec();
 	}
-	
-//	public static void main(String[] args) {
-//		Engine e = new Engine();
-//		Car c = new Car();
-//		c.setEngine(e);
-//		c.run();
-//	}
 }
