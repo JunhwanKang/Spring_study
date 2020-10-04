@@ -1,5 +1,7 @@
 package kr.or.connect.daoexam.dao;
 
+import static kr.or.connect.daoexam.dao.RoleDaoSqls.*;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +16,6 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.daoexam.dto.Role;
-import static kr.or.connect.daoexam.dao.RoleDaoSqls.*;
 @Repository
 public class RoleDao {
 	private NamedParameterJdbcTemplate jdbc;
@@ -34,5 +35,10 @@ public class RoleDao {
 	public int insert(Role role) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
 		return insertAction.execute(params);
+	}
+	
+	public int update(Role role) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
+		return jdbc.update(UPDATE, params);
 	}
 }
